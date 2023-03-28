@@ -33,8 +33,9 @@ const App = () => {
 
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollViewStyle} contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.containerMain}>
+
         <Image style={styles.avatarImageStyle}
           source={require('./assets/man.png')}></Image>
 
@@ -63,12 +64,17 @@ const App = () => {
       <View style={styles.box3}></View> */}
 
         <View style={styles.buttonsContainer}>
+
           <TouchableOpacity style={styles.button}>
+
             <Text style={styles.buttonText}>Cancel</Text>
+
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button}>
+
             <Text style={styles.buttonText}>Save</Text>
+
           </TouchableOpacity>
 
           {/* startIcon={<DeleteIcon /> */}
@@ -77,20 +83,20 @@ const App = () => {
             Delete
           </Button> */}
 
-          <Button
+          {/* <Button
             title="Press me"
             onPress={() => Alert.alert('Simple Button pressed')}
 
-          />
+          /> */}
 
-          <Pressable
+          {/* <Pressable
             style={styles.button}
             // onPress={onPress}
             >
 
             <Text style={styles.button}>{}</Text>
-            
-          </Pressable>
+
+          </Pressable> */}
         </View>
       </View >
 
@@ -110,9 +116,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: 'row',
-
-    backgroundColor: 'red',
-
+    // backgroundColor: 'red',
   },
   // container: {
   //   flex: 1,
@@ -120,6 +124,10 @@ const styles = StyleSheet.create({
   //   alignItems: 'center',
   //   justifyContent: 'center',
   // },
+  scrollViewStyle: {
+    
+    // flex: 0,
+  },
 
   /**IMAGES */
   avatarImageStyle: {
@@ -146,10 +154,11 @@ const styles = StyleSheet.create({
     flex: 0,
     margin: 12,
     padding: 12,
-    backgroundColor: 'darkblue',
+    backgroundColor: 'orange',
     borderRadius: 10,
   },
   buttonText: {
+    fontWeight: 'bold',
     textAlign: 'center',
     color: 'white'
   },
