@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 // import { NavigationContainer } from '@react-navigation/native';
 import {
   StyleSheet, Text, TextInput, View, Image,
@@ -7,10 +7,7 @@ import {
   Alert
 } from 'react-native';
 
-
-
-
-const AddStudentView = () => {
+const AddStudentView: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
 
   const [id, setId] = useState("")
   const [name, setName] = useState("")
@@ -26,7 +23,7 @@ const AddStudentView = () => {
   }
 
   const onCancellCallback = () => {
-    // navigation.goBack()
+    // navigation.navigate('StudentDetails')
   }
 
 
@@ -35,7 +32,7 @@ const AddStudentView = () => {
       <View style={styles.containerMain}>
 
         <Image style={styles.avatarImageStyle}
-          source={require('./assets/man.png')}></Image>
+          source={require('../assets/man.png')}></Image>
 
         <TextInput
           style={styles.inputField}
@@ -134,6 +131,7 @@ const styles = StyleSheet.create({
     width: 200,
     alignItems: 'center',
     justifyContent: 'center',
+    aspectRatio: 1,
   },
   inputField: {
     paddingLeft: 12,
@@ -178,6 +176,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 
 export default AddStudentView

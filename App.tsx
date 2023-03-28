@@ -9,30 +9,9 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import AddStudentViewfrom from './componnents/StudentAddView'; //my file
 
-/**Home Screen */
-const HomeScreen: FC<{ navigation: any }> = ({ navigation }) => {
-    return (
-        <View style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
-
-            <Text>Home Screen</Text>
-            <Button
-                title="Go to Register screen"
-                onPress={() => navigation.navigate('Register',{id:1})}
-            />
-            <Button
-                title="Go to Details screen"
-                onPress={() => navigation.navigate('Details',{id:1})}
-            />
-
-        </View>
-    );
-}
+import HomeScreen from './componnents/HomeScreen';          //my file
+import RegisterScreen from './componnents/RegisterScreen';  //my file
 
 const DetailsScreen: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
 
@@ -49,42 +28,13 @@ const DetailsScreen: FC<{ route: any, navigation: any }> = ({ route, navigation 
     );
 }
 
-/**Register Screen */
-const RegisterScreen: FC = () => {
-    return (
-        <View style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
 
-            <AddStudentViewfrom></AddStudentViewfrom>
-
-        </View>
-    );
-}
 
 
 const Stack = createNativeStackNavigator();
 
 const App: FC = () => {
     console.log("App started.");
-
-    // const [id, setId] = useState("")
-
-
-    // const onPressCallback = () => {
-    //     console.log("Button is pressed.");
-    // }
-
-    // const onSaveCallback = async () => {
-    // }
-
-    // const onCancellCallback = () => {
-    //     // navigation.goBack()
-    // }
-
-
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ title: 'Tittle apply to all' }}>
@@ -95,6 +45,7 @@ const App: FC = () => {
         </NavigationContainer>
     )
 };
+
 
 const styles = StyleSheet.create({
     /**CONTAINERS */

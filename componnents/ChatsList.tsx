@@ -25,9 +25,7 @@ const onChatPressCallback = () => {
  */
 const ChatsList: FC<{ navigation: any }> = ({ navigation }) => {
     return (
-        <ScrollView style={{
-            flex: 1
-        }}>
+        <ScrollView style={styles.scrollViewStyle}>
             {/* bar make text "My chats" where    */}
             <Text>Home Screen - Logged in</Text>
             <Button
@@ -105,13 +103,14 @@ const styles = StyleSheet.create({
     },
     scrollViewStyle: {
         flex: 1,
+        backgroundColor: 'orange',
     },
     chatTittleText: {
         paddingLeft: 12,
         paddingRight: 12,
         margin: 3,
         width: 250,
-        backgroundColor: 'lightyellow',
+        // backgroundColor: 'lightyellow',
         alignItems: 'center',
         justifyContent: 'center',
     }
