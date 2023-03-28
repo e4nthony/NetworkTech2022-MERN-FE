@@ -9,7 +9,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import AddStudentViewfrom from './addStudentView'; //my file
+import AddStudentViewfrom from './componnents/StudentAddView'; //my file
 
 /**Home Screen */
 const HomeScreen: FC<{ navigation: any }> = ({ navigation }) => {
