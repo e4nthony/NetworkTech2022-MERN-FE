@@ -23,9 +23,28 @@ const HomeScreen: FC<{ navigation: any }> = ({ navigation }) => {
             <Text>Home Screen</Text>
             <Button
                 title="Go to Register screen"
-                onPress={() => navigation.navigate('Register')}
+                onPress={() => navigation.navigate('Register',{id:1})}
+            />
+            <Button
+                title="Go to Details screen"
+                onPress={() => navigation.navigate('Details',{id:1})}
             />
 
+        </View>
+    );
+}
+
+const DetailsScreen: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
+
+    const itemId = JSON.stringify(route.params.id)
+    const name = JSON.stringify(route.params.name)
+
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Details Screen</Text>
+            <Text>id:{itemId}</Text>
+            <Text>{name}</Text>
+            <Button title="Go back" onPress={() => navigation.goBack()} />
         </View>
     );
 }
@@ -71,6 +90,7 @@ const App: FC = () => {
             <Stack.Navigator screenOptions={{ title: 'Tittle apply to all' }}>
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Register" component={RegisterScreen} />
+                <Stack.Screen name="Details" component={DetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )
