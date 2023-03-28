@@ -48,13 +48,13 @@ const App = () => {
         <TextInput
           style={styles.inputField}
           onChangeText={setName}
-          value={id}
+          value={name}
           placeholder={'Name'}
         />
         <TextInput
           style={styles.inputField}
           onChangeText={setAddress}
-          value={id}
+          value={address}
           placeholder={'Address'}
         />
 
