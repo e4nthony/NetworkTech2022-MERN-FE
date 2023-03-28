@@ -10,8 +10,7 @@ import {
 
 
 
-const App = () => {
-  console.log("App started.");
+const AddStudentView = () => {
 
   const [id, setId] = useState("")
   const [name, setName] = useState("")
@@ -124,8 +123,8 @@ const styles = StyleSheet.create({
   //   justifyContent: 'center',
   // },
   scrollViewStyle: {
-    
-    // flex: 0,
+
+    flexGrow: 1,
   },
 
   /**IMAGES */
@@ -181,4 +180,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default App
+export default AddStudentView
