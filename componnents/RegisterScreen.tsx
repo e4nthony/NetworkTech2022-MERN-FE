@@ -9,6 +9,9 @@ import {
 
 import UserModel, { UserLoginInfo, UserPreviewInfo, UserRegInfo } from "../model/UserModel"
 
+import IconContext, { CiCamera } from "react-icons/ci";
+
+
 // const loadScript = (src) =>
 //     new Promise((resolve, reject) => {
 //         if (document.querySelector(`script[src="${src}"]`)) return resolve()
@@ -83,14 +86,31 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
         navigation.goBack();
     }
 
+    const onImageUploadCallback = () => {
+        //
+    }
+
     return (
         <ScrollView style={styles.scrollViewStyle} contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.containerMain}>
 
-                <Image style={styles.avatarImageStyle}
-                    source={require('../assets/man.png')}></Image>
+                <View>
+                    <Image style={styles.avatarImageStyle}
+                        source={require('../assets/man.png')}></Image>
 
-                {/* todo upload image button */}
+                    {/* todo upload image button */}
+                    <TouchableOpacity onPress={onImageUploadCallback} style={styles.imageButton}>
+                        {/* <Text style={{ flex: .8 }}>Upload</Text> */}
+                        <Image source={require('../assets/camera.png')} resizeMode='contain' style={{ flex: 1 }} />
+                        
+
+                        {/* <Text style={styles.buttonText} >Upload</Text> */}
+
+                    </TouchableOpacity>
+                </View>
+
+
+
 
                 <TextInput
                     style={styles.inputField}
@@ -204,6 +224,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         aspectRatio: 1,
+        top: 50,
     },
     inputField: {
         paddingLeft: 12,
@@ -233,6 +254,20 @@ const styles = StyleSheet.create({
         padding: 12,
         backgroundColor: 'orange',
         borderRadius: 10,
+    },
+    imageButton: {
+        aspectRatio: 1,
+        width: 65,
+        margin: 0,
+        padding: 12,
+        backgroundColor: 'orange',
+        borderRadius: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: "row",
+        right: -125,
+        top: -15,
+
     },
     buttonText: {
         fontWeight: 'bold',
