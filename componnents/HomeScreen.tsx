@@ -25,6 +25,14 @@ const HomeScreen: FC<{ navigation: any }> = ({ navigation }) => {
         navigation.navigate('Register');
     }
 
+    const NavChat = () => {
+        navigation.navigate('ChatsList');
+    }
+
+    const NavDetails = () => {
+        navigation.navigate('UserDetailsScreen');
+    }
+
     return (
         <View style={{
             flex: 1
@@ -47,6 +55,21 @@ const HomeScreen: FC<{ navigation: any }> = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
 
+                <View style={styles.buttonsContainer2}>
+
+                    <TouchableOpacity onPress={NavChat} style={styles.button}>
+
+                        <Text style={styles.buttonText}>Chat (shorcut)</Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={NavDetails} style={styles.button}>
+
+                        <Text style={styles.buttonText}>User details</Text>
+
+                    </TouchableOpacity>
+
+                </View>
 
 
             </View>
@@ -114,6 +137,11 @@ const styles = StyleSheet.create({
     buttonsContainer: {
         margin: 30
         // flexDirection: 'column',
+    },
+    buttonsContainer2: {
+        margin: 30,
+        // flexDirection: 'column',
+        top: 10
     },
     scrollViewStyle: {
 

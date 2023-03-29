@@ -14,11 +14,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './componnents/HomeScreen';          //my file
 import RegisterScreen from './componnents/RegisterScreen';  //my file
-import LoginScreen from './componnents/LoginScreen';  //my file
+import LoginScreen from './componnents/LoginScreen';        //my file
+import UserDetailsScreen from './componnents/UserDetailsScreen';        //my file
+import ChatsList from './componnents/ChatsList';  //dont a screen*
+import Chat from './componnents/Chat';  //dont a screen*
+
+import * as AuthSession from 'expo-auth-session'; 
 
 /**STORAGE */
-
-
 const getData = async () => {
     try {
         const refreshToken = await AsyncStorage.getItem('@refreshToken')
@@ -61,11 +64,13 @@ const App: FC = () => {
     console.log("App started.");
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ title: 'Tittle apply to all' }}>
+            <Stack.Navigator screenOptions={{ title: 'App' }}>
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Register" component={RegisterScreen} />
                 <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name="Details" component={DetailsScreen} />
+                <Stack.Screen name="UserDetailsScreen" component={UserDetailsScreen} />
+                <Stack.Screen name="ChatsList" component={ChatsList} />
+                <Stack.Screen name="Chat" component={Chat} />
             </Stack.Navigator>
         </NavigationContainer>
     )

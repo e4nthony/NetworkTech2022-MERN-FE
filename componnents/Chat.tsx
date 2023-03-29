@@ -34,14 +34,16 @@ const ChatsList: FC<{ navigation: any }> = ({ navigation }) => {
     return (
         <ScrollView style={styles.scrollViewStyle}>
             {/* <ChatTittle navigation={1}></ChatTittle>// dev delete */}
-            <ChatTittle navigation={navigation}></ChatTittle>
-            <ChatTittle navigation={navigation}></ChatTittle>
-            <ChatTittle navigation={navigation}></ChatTittle>
-            <ChatTittle navigation={navigation}></ChatTittle>
-            <ChatTittle navigation={navigation}></ChatTittle>
-            <ChatTittle navigation={navigation}></ChatTittle>
-            <ChatTittle navigation={navigation}></ChatTittle>
-            <ChatTittle navigation={navigation}></ChatTittle>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
+            <Message navigation={navigation}></Message>
 
         </ScrollView>
     );
@@ -56,25 +58,11 @@ const ChatsList: FC<{ navigation: any }> = ({ navigation }) => {
  * @param param0 
  * @returns 
  */
-const ChatTittle: FC<{ navigation: any }> = ({ navigation }) => {
+const Message: FC<{ navigation: any }> = ({ navigation }) => {
     return (
         <View style={{
             flex: 1
         }}>
-            <TouchableOpacity 
-            // onPress={onChatPressCallback} 
-            style={styles.chatTittleContainer}>
-
-                <Image style={styles.avatarImageStyle}
-                    source={require('../assets/man.png') // todo: update
-
-                        //{ if(can find user image) {
-                        //      set user image
-                        // }else{
-                        //     set default icon require('../assets/man.png')
-                        // }}
-
-                    }></Image>
 
                 <Text style={styles.chatTittleText}> User Name
                     {/* // { if(can find user name) {
@@ -84,7 +72,6 @@ const ChatTittle: FC<{ navigation: any }> = ({ navigation }) => {
                         // }} */}
                 </Text>
 
-            </TouchableOpacity>
 
         </View>
     );
