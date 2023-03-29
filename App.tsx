@@ -17,30 +17,23 @@ import RegisterScreen from './componnents/RegisterScreen';  //my file
 import LoginScreen from './componnents/LoginScreen';  //my file
 
 /**STORAGE */
-const SaveRefreshToken = async (refreshTokenValue: string, accessTokenValue: string) => {
-    try {
-      await AsyncStorage.setItem('@refreshToken', refreshTokenValue)
-      await AsyncStorage.setItem('@accessToken', accessTokenValue)
-    } catch (e) {
-      // saving error
-    }
-  }
+
 
 const getData = async () => {
     try {
-      const refreshToken = await AsyncStorage.getItem('@refreshToken')
-      const accessToken = await AsyncStorage.getItem('@accessTokenValue')
-      if(refreshToken !== null) {
-        // value previously stored
-      }
-      if(accessToken !== null) {
-        // value previously stored
-      }
-    } catch(e) {
-      // error reading value
+        const refreshToken = await AsyncStorage.getItem('@refreshToken')
+        const accessToken = await AsyncStorage.getItem('@accessTokenValue')
+        if (refreshToken !== null) {
+            // value previously stored
+        }
+        if (accessToken !== null) {
+            // value previously stored
+        }
+    } catch (e) {
+        // error reading value
     }
-  }
-  
+}
+
 
 
 

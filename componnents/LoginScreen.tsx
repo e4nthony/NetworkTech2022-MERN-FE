@@ -7,7 +7,11 @@ import {
     Alert
 } from 'react-native';
 
-import UserModel, { UserLoginInfo, UserPreviewInfo, UserRegInfo } from "../model/UserModel"
+import UserModel, { UserData, UserLoginInfo, UserPreviewInfo, UserRegInfo } from "../model/UserModel"
+
+
+
+
 
 // const loadScript = (src) =>
 //     new Promise((resolve, reject) => {
