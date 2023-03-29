@@ -12,6 +12,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './componnents/HomeScreen';          //my file
 import RegisterScreen from './componnents/RegisterScreen';  //my file
+import LoginScreen from './componnents/LoginScreen';  //my file
 
 const DetailsScreen: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
 
@@ -40,6 +41,7 @@ const App: FC = () => {
             <Stack.Navigator screenOptions={{ title: 'Tittle apply to all' }}>
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Register" component={RegisterScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="Details" component={DetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>

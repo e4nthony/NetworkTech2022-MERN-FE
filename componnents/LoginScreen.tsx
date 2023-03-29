@@ -19,8 +19,8 @@ import UserModel, { UserLoginInfo, UserPreviewInfo, UserRegInfo } from "../model
 //         document.body.appendChild(script)
 //     })
 
-/**Register Screen */
-const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
+/**Login Screen */
+const LoginScreen: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
 
     const [email, setEmail] = useState("")
     const [name, setName] = useState("")
@@ -57,13 +57,13 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
     //     }
     //   }, [])
 
-    const onRegisterCallback = async () => {
-        const user: UserRegInfo = {
+    const onLoginCallback = async () => {
+
+        const user: UserLoginInfo = {
             email: email,
-            name: name,
             password: password,
-            imageUrl: '' //"url" todo
         };
+
         try {
             // if (avatarUri != "") {
             //     console.log("uploading image")
@@ -72,7 +72,7 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
             //     console.log("got url from upload: " + url)
             // }
             // console.log("saving user")
-            await UserModel.register(user);
+            let tokens = await UserModel.login(user);
         } catch (err) {
             console.log("fail adding user: " + err);
         }
@@ -83,6 +83,7 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
         navigation.goBack();
     }
 
+
     return (
         <ScrollView style={styles.scrollViewStyle} contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.containerMain}>
@@ -90,14 +91,6 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
                 <Image style={styles.avatarImageStyle}
                     source={require('../assets/man.png')}></Image>
 
-                {/* todo upload image button */}
-
-                <TextInput
-                    style={styles.inputField}
-                    onChangeText={setName}
-                    value={name}
-                    placeholder={'Name'}
-                />
                 <TextInput
                     style={styles.inputField}
                     onChangeText={setEmail}
@@ -120,15 +113,15 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
 
                 <View style={styles.buttonsContainer}>
 
-                    <TouchableOpacity onPress={onRegisterCallback} style={styles.registerButton}>
+                    <TouchableOpacity onPress={onLoginCallback} style={styles.LoginButton}>
 
-                        <Text style={styles.buttonText}>Register</Text>
+                        <Text style={styles.buttonText}>Login</Text>
 
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         // onPress={onSaveCallback}
-                        style={styles.registerButton}>
+                        style={styles.LoginButton}>
 
                         <Text style={styles.buttonText}>GOOGLE</Text>
 
@@ -218,7 +211,7 @@ const styles = StyleSheet.create({
 
 
     /**BUTTONS */
-    registerButton: {
+    LoginButton: {
         width: 140,
         margin: 12,
         padding: 12,
@@ -259,4 +252,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default RegisterScreen
+export default LoginScreen

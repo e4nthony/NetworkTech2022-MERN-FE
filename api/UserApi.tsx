@@ -1,5 +1,5 @@
 import apiClient from "./ClientApi";
-import { User, UserLoginInfo, UserPreviewInfo, UserRegInfo } from "../model/UserModel"
+import { UserLoginInfo, UserPreviewInfo, UserRegInfo } from "../model/UserModel"
 
 const getAllUsers = async () => {
     return apiClient.get("/user");

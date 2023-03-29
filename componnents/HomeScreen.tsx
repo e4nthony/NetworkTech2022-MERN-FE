@@ -18,7 +18,7 @@ import AddStudentView from './StudentAddView';
 const HomeScreen: FC<{ navigation: any }> = ({ navigation }) => {
 
     const Log_in = () => {
-        // navigation.
+        navigation.navigate('Login');
     }
 
     const Register = () => {

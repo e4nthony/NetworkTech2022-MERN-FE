@@ -2,17 +2,25 @@ import apiClient from "../api/ClientApi"
 import UserApi from "../api/UserApi"
 import FormData from "form-data"
 
-
 /**                   
- * User CompleteInfo - for debug?
+ * Tokens
  */
-export type User = {
-  _id: String,
-  email: String,
-  name: String,
-  password: String,
-  imageUrl: String,   // todo later
+export type UserTokens = {
+  refreshToken: String,
+  accessToken: String
 }
+
+// /**                   
+//  * User CompleteInfo - for debug?
+//  */
+// export type User = {
+//   _id: String,
+//   email: String,
+//   name: String,
+//   password: String,
+//   imageUrl: String,   // todo later
+//   //tokens?
+// }
 
 /**
  * getting from server
@@ -39,7 +47,7 @@ export type UserRegInfo = {
 /**
  * sending to server
  */
- export type UserLoginInfo = {
+export type UserLoginInfo = {
   //  no _id
   email: String,
   //  no name
@@ -74,7 +82,7 @@ const getAllUsers = async () => {
 
 const register = async (user: UserRegInfo) => {
   console.log("register")
-  
+
   const data: UserRegInfo = {
     email: user.email,
     name: user.name,
@@ -92,7 +100,7 @@ const register = async (user: UserRegInfo) => {
 
 const login = async (user: UserLoginInfo) => {
   console.log("login")
-  
+
   const data: UserLoginInfo = {
     email: user.email,
     password: user.password //unencrypted password/raw
