@@ -6,6 +6,8 @@ import {
     Alert,
 } from 'react-native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -13,6 +15,34 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './componnents/HomeScreen';          //my file
 import RegisterScreen from './componnents/RegisterScreen';  //my file
 import LoginScreen from './componnents/LoginScreen';  //my file
+
+/**STORAGE */
+const SaveRefreshToken = async (refreshTokenValue: string, accessTokenValue: string) => {
+    try {
+      await AsyncStorage.setItem('@refreshToken', refreshTokenValue)
+      await AsyncStorage.setItem('@accessToken', accessTokenValue)
+    } catch (e) {
+      // saving error
+    }
+  }
+
+const getData = async () => {
+    try {
+      const refreshToken = await AsyncStorage.getItem('@refreshToken')
+      const accessToken = await AsyncStorage.getItem('@accessTokenValue')
+      if(refreshToken !== null) {
+        // value previously stored
+      }
+      if(accessToken !== null) {
+        // value previously stored
+      }
+    } catch(e) {
+      // error reading value
+    }
+  }
+  
+
+
 
 const DetailsScreen: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
 
