@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonsContainer: {
+        margin: 30
         // flexDirection: 'column',
     },
     scrollViewStyle: {

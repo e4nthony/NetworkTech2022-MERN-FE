@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 // import { NavigationContainer } from '@react-navigation/native';
 import {
     StyleSheet, Text, TextInput, View, Image,
@@ -7,21 +7,76 @@ import {
     Alert
 } from 'react-native';
 
+import UserModel, { User, UserLoginInfo, UserPreviewInfo, UserRegInfo } from "../model/UserModel"
 
+// const loadScript = (src) =>
+//     new Promise((resolve, reject) => {
+//         if (document.querySelector(`script[src="${src}"]`)) return resolve()
+//         const script = document.createElement('script')
+//         script.src = src
+//         script.onload = () => resolve()
+//         script.onerror = (err) => reject(err)
+//         document.body.appendChild(script)
+//     })
 
 /**Register Screen */
 const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
 
-    const [email, setId] = useState("")
-    const [password, setName] = useState("")
-    const [avatarUri, setAvatarUri] = useState("")
+    const [email, setEmail] = useState("")
+    const [name, setName] = useState("")
+    const [password, setPassword] = useState("")
+    const [imageUrl, setimageUrl] = useState("")
 
+    // const googleButton = useRef(null);
 
-    const onPressCallback = () => {
-        console.log("Button is pressed.");
-    }
+    // useEffect(() => {
+    //     const src = 'https://accounts.google.com/gsi/client';
+
+    //     const id = ""
+
+    //     loadScript(src)
+    //       .then(() => {
+    //         /*global google*/
+    //         console.log(google);
+
+    //         google.accounts.id.initialize({
+    //           client_id: id,
+    //           callback: handleCredentialResponse,
+    //         });
+
+    //         google.accounts.id.renderButton(
+    //           googleButton.current, 
+    //           { theme: 'outline', size: 'large' } 
+    //         );
+
+    //       }).catch(console.error);
+
+    //     return () => {
+    //       const scriptTag = document.querySelector(`script[src="${src}"]`)
+    //       if (scriptTag) document.body.removeChild(scriptTag)
+    //     }
+    //   }, [])
 
     const onSaveCallback = async () => {
+        const user: UserRegInfo = {
+            email: email,
+            name: name,
+            password: password,
+            imageUrl: '' //"url" todo
+        };
+        try {
+            // if (avatarUri != "") {
+            //     console.log("uploading image")
+            //     const url = await StudentModel.uploadImage(avatarUri)
+            //     student.image = url
+            //     console.log("got url from upload: " + url)
+            // }
+            // console.log("saving user")
+            await UserModel.register(user);
+        } catch (err) {
+            console.log("fail adding user: " + err);
+        }
+        navigation.goBack();
     }
 
     const onCancellCallback = () => {
@@ -33,18 +88,26 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
         <ScrollView style={styles.scrollViewStyle} contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.containerMain}>
 
-                <Image style={styles.avatarImageStyle}
+                <Image style={styles.avatarImageStyle} 
                     source={require('../assets/man.png')}></Image>
+
+                {/* todo upload image button */}
 
                 <TextInput
                     style={styles.inputField}
-                    onChangeText={setId}
+                    onChangeText={setName}
+                    value={name}
+                    placeholder={'Name'}
+                />
+                <TextInput
+                    style={styles.inputField}
+                    onChangeText={setEmail}
                     value={email}
                     placeholder={'Email'}
                 />
                 <TextInput
                     style={styles.inputField}
-                    onChangeText={setName}
+                    onChangeText={setPassword}
                     value={password}
                     placeholder={'Password'}
                 />
@@ -58,17 +121,27 @@ const RegisterScreen: FC<{ route: any, navigation: any }> = ({ route, navigation
 
                 <View style={styles.buttonsContainer}>
 
-                    <TouchableOpacity onPress={onCancellCallback} style={styles.button}>
+                    <TouchableOpacity onPress={onSaveCallback} style={styles.registerButton}>
 
-                        <Text style={styles.buttonText}>Cancel</Text>
+                        <Text style={styles.buttonText}>Register</Text>
+
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        // onPress={onSaveCallback}
+                        style={styles.registerButton}>
+
+                        <Text style={styles.buttonText}>GOOGLE</Text>
 
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={onSaveCallback} style={styles.button}>
+                    <TouchableOpacity onPress={onCancellCallback} style={styles.cancelButton}>
 
-                        <Text style={styles.buttonText}>Save</Text>
+                        <Text style={styles.buttonText} >Cancel</Text>
 
                     </TouchableOpacity>
+
+
 
                     {/* startIcon={<DeleteIcon /> */}
 
@@ -108,8 +181,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonsContainer: {
-        flexDirection: 'row',
+        // flexDirection: 'row',
         // backgroundColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     // container: {
     //   flex: 1,
@@ -144,8 +219,17 @@ const styles = StyleSheet.create({
 
 
     /**BUTTONS */
-    button: {
-        flex: 0,
+    registerButton: {
+        width: 140,
+        margin: 12,
+        padding: 12,
+        backgroundColor: 'orange',
+        borderRadius: 10,
+        fontSize: 10
+    },
+    cancelButton: {
+        width: 100,
+        marginTop: 50,
         margin: 12,
         padding: 12,
         backgroundColor: 'orange',
