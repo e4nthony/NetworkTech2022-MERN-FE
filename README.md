@@ -1,4 +1,7 @@
-# NetworkTech2022_Frontend
+# Network Technologies Course 2022 - MERN Stack - Frontend
+
+### Tools:
+JavaScript, React, Node.js, Express.js, MongoDB, TypeScript
 
 DevPreview:
 
